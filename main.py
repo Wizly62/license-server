@@ -2,11 +2,11 @@
 from flask import Flask, request, jsonify
 import sqlite3
 from datetime import datetime
+import os
 
 app = Flask(__name__)
 DB_FILE = 'licenses.db'
 
-# Создание таблицы, если не существует
 def init_db():
     with sqlite3.connect(DB_FILE) as conn:
         cursor = conn.cursor()
@@ -67,9 +67,7 @@ def add_license():
 
     return jsonify({'status': 'added'}), 200
 
-import os
 if __name__ == '__main__':
     init_db()
-    import os
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
