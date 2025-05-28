@@ -1,1 +1,1 @@
-web: python license_server_api.py
+web: python main.py
